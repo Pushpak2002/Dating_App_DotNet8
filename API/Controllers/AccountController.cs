@@ -42,10 +42,10 @@ public class AccountController(DataContext context, ITokenService tokenService) 
     public async Task<ActionResult<UserDto>> Login(LoginDto loginDto)
     {
         var user = await context.Users.FirstOrDefaultAsync(
-            x => x.UserName == loginDto.Username.ToLower()
-        );
+            x => x.UserName == loginDto.Username);
 
         if (user == null) return Unauthorized("Invalid UserName");
+        
 
         using var hmac = new HMACSHA512(user.PasswordSalt);
 
