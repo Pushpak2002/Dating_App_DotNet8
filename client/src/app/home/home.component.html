@@ -15,7 +15,10 @@
         }@else {
             <div class="container">
                 <div class="row justify-content-center">
-                    <app-resister [usersFromHomeComponent]="users"></app-resister>
+                    <app-resister 
+                    [usersFromHomeComponent]="users"
+                    (cancelResister)="cancelRegisterMode($event)"
+                    ></app-resister>
                 </div>
             </div>
         }     

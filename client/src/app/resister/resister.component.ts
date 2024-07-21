@@ -1,4 +1,4 @@
-import { Component, input } from '@angular/core';
+import { Component, input, output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 @Component({
@@ -10,6 +10,9 @@ import { FormsModule } from '@angular/forms';
 })
 export class ResisterComponent {
   usersFromHomeComponent = input.required<any>();
+  cancelResister = output<boolean>();
+
+
   model : any = {}
 
   register(){
@@ -17,6 +20,6 @@ export class ResisterComponent {
   }
 
   cancel(){
-    console.log('cancelled');
+    this.cancelResister.emit(false);
   }
 }
