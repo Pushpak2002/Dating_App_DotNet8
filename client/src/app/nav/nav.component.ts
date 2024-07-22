@@ -3,7 +3,7 @@ import { FormsModule } from '@angular/forms';
 import { AccountService } from '../_services/account.service';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { Router, RouterLink, RouterLinkActive } from '@angular/router';
-
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-nav',
   standalone: true,
@@ -15,6 +15,7 @@ export class NavComponent {
   
   accountService  = inject(AccountService);
   private router = inject(Router)
+  private toastr = inject(ToastrService);
   
   
   model : any = {};
@@ -24,7 +25,7 @@ export class NavComponent {
     next : () =>{
       this.router.navigateByUrl('/members')
     },
-    error: error => console.log(error)
+    error: error => this.toastr.error(error.error)
    })
   }
 
